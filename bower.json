@@ -1,0 +1,21 @@
+{
+  "name"         : "Online Leave Management System",
+  "description"  : "",
+  "version"      : "0.0.0",
+  "authors"      : [
+    { "name": "Abhishek Munie", "email": "projects@abhishekmunie.com", "homepage": "https://abhishekmunie.com" }
+  ],
+  "homepage"     : "",
+  "repository"   : {
+    "type": "git",
+    "url": "git://github.com/abhishekmunie/olms.git"
+  },
+  "dependencies" : {
+    "modernizr"    : "latest",
+    "jquery"       : "latest",
+    "bootstrap"    : "latest",
+    "font-awesome" : "latest",
+    "webshim"      : "latest"
+  },
+  "private"      : "true"
+}

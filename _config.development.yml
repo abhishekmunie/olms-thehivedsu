@@ -1,0 +1,12 @@
+# Site settings
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://olms.dev" # the base hostname & protocol for your site
+
+# Build settings
+title_prefix:
+title: Online Leave Management System
+title_suffix: Online Leave Management System
+tagline: ""
+home: http://olms.dev
+search_title: olms.dev
+

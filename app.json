@@ -1,0 +1,5 @@
+{
+  "name": "Online Leave Management System",
+  "description": "app.json for Online Leave Management System heroku-docker.",
+  "image": "heroku/java"
+}

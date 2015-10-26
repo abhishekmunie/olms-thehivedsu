@@ -1,0 +1,78 @@
+# Site settings
+name: Online Leave Management System
+company: The Hive
+email: your-email@domain.com
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://olms.thehivedsu.cf" # the base hostname & protocol for your site
+twitter_username: abhishekmunie
+github_username:  abhishekmunie
+
+# Build settings
+markdown: redcarpet
+highlighter: pygments
+source: jekyll
+destination: WebContent
+
+exclude: ['bower_components', 'css', 'js', 'images', 'WEB-INF', '.rvmrc', '.rbenv-version', 'README.md', 'changelog.md', 'bin', 'vendor', 'Gemfile', 'Gemfile.lock', 'Procfile', 'Rakefile', 'unicorn.rb', 'config.ru']
+keep_files:  ['WEB-INF', 'META-INF', 'bower_components', 'css', 'js', 'images', 'LICENSE.txt', 'robots.txt', 'tile.png', 'tile-wide.png', 'favicon.ico', 'apple-touch-icon.png', 'apple-touch-icon-precomposed.png']
+gems:
+  - jekyll-assets
+  - jekyll-sitemap
+  - octopress-minify-html
+  - octopress-filters
+
+minify_html: true
+
+# html_press:
+#   unquoted_attributes: false
+#   drop_empty_values: false
+#   strip_crlf: false
+#   js_minifier_options: false
+
+
+title_prefix:
+title: Online Leave Management System
+title_suffix: Online Leave Management System
+tagline: ""
+home: https://olms.thehivedsu.cf
+search_title: olms.thehivedsu.cf
+
+production_url : https://olms.thehivedsu.cf
+
+github_repository: https://github.com/abhishekmunie/olms-thehivedsu
+licence: MIT
+
+ASSET_PATH :
+  static : /static/
+  css    : /css/
+  js     : /js/
+  img    : /images/
+
+main_nav:
+  About: /about
+  Contact: /contact
+
+
+imports :
+  css :
+    bootstrap:       /bower_components/bootstrap/dist/css/bootstrap.min.css
+    bootstrap_theme: /bower_components/bootstrap/dist/css/bootstrap-theme.min.css
+    font_awesome:    /bower_components/font-awesome/css/font-awesome.min.css
+    main:            /css/main.css
+  modernizr: /bower_components/modernizer/modernizr.js
+  js :
+    bootstrap: /bower_components/bootstrap/dist/js/bootstrap.min.js
+    webshim:   /bower_components/webshim/js-webshim/minified/polyfiller.js
+    plugins:   /js/plugins.js
+    main:      /js/main.js
+
+config:
+  google:
+    # analytics:
+    #   id: UA-XXXXX-X
+
+
