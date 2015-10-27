@@ -18,7 +18,7 @@ source: jekyll
 destination: WebContent
 
 exclude: ['bower_components', 'css', 'js', 'images', 'WEB-INF', '.rvmrc', '.rbenv-version', 'README.md', 'changelog.md', 'bin', 'vendor', 'Gemfile', 'Gemfile.lock', 'Procfile', 'Rakefile', 'unicorn.rb', 'config.ru']
-keep_files:  ['WEB-INF', 'META-INF', 'bower_components', 'css', 'js', 'images', 'LICENSE.txt', 'robots.txt', 'tile.png', 'tile-wide.png', 'favicon.ico', 'apple-touch-icon.png', 'apple-touch-icon-precomposed.png']
+keep_files:  ['WEB-INF', 'META-INF', 'bower_components', 'css', 'js', 'images', 'LICENSE.txt', 'robots.txt', 'tile.png', 'tile-wide.png', 'favicon.ico', 'apple-touch-icon.png', 'apple-touch-icon-precomposed.png', 'browserconfig.xml', 'crossdomain.xml', 'humans.txt']
 gems:
   - jekyll-assets
   - jekyll-sitemap

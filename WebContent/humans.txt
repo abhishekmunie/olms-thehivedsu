@@ -1,0 +1,18 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Abhishek Munie -- Coordinator -- @AbhishekMunie
+    Raghu Raju
+    Sai Prasad G. K.
+    Tejaswini R. V.
+
+# THANKS
+
+
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5, JavaScript
+    jQuery, Modernizr, Bootstrap, Font Awesome, Webshim
