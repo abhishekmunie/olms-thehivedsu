@@ -7,6 +7,21 @@
 	<display-name>Online Leave Management System</display-name>
 	<description>
     </description>
+	<session-config>
+		<session-timeout>60</session-timeout> <!-- 60 minutes -->
+		<cookie-config>
+			<!-- <http-only>true</http-only> -->
+			<!-- <secure>true</secure> -->
+		</cookie-config>
+	</session-config>
+	<!-- A filter that triggers request parameters parsing and rejects the -->
+	<!-- request if some parameters were skipped because of parsing errors or -->
+	<!-- request size limitations. -->
+	<filter>
+		<filter-name>failedRequestFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.FailedRequestFilter</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
 	<!-- Error Page Configs -->
 	<error-page>
 		<error-code>404</error-code>

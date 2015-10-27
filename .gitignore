@@ -28,8 +28,6 @@ target/
 # Locally stored "Eclipse launch configurations"
 *.launch
 
-WebContent/META-INF/context.xml
-
 docker-compose.yml
 
 Gemfile.lock
@@ -46,3 +44,20 @@ Dockerfile
 !.settings/org.eclipse.wst.common.component
 
 src/cf/thehivedsu/olms/extras/*
+
+WebContent/*
+!WebContent/META-INF/*
+WebContent/META-INF/context.xml
+!WebContent/WEB-INF/*
+WebContent/WEB-INF/classes
+!WebContent/css
+!WebContent/js
+!WebContent/images
+!WebContent/LICENSE.txt
+!WebContent/robots.txt
+!WebContent/tile.png
+!WebContent/tile-wide.png
+!WebContent/favicon.ico
+!WebContent/apple-touch-icon.png
+!WebContent/apple-touch-icon-precomposed.png
+.DS_Store
