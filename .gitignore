@@ -30,8 +30,6 @@ target/
 
 docker-compose.yml
 
-Gemfile.lock
-
 Dockerfile
 
 .settings/*
