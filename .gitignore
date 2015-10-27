@@ -47,7 +47,6 @@ src/cf/thehivedsu/olms/extras/*
 
 WebContent/*
 !WebContent/META-INF/*
-WebContent/META-INF/context.xml
 !WebContent/WEB-INF/*
 WebContent/WEB-INF/classes
 !WebContent/css
@@ -60,4 +59,7 @@ WebContent/WEB-INF/classes
 !WebContent/favicon.ico
 !WebContent/apple-touch-icon.png
 !WebContent/apple-touch-icon-precomposed.png
+!WebContent/browserconfig.xml
+!WebContent/crossdomain.xml
+!WebContent/humans.txt
 .DS_Store
