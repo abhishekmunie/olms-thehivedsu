@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/">
+	<Resource name="jdbc/MainDB" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/olms"
+		username="root" password="admin" maxActive="10"
+		maxIdle="5" maxWait="10000" removeAbandoned="true"
+		removeAbandonedTimeout="90" logAbandoned="true" />
 </Context>
