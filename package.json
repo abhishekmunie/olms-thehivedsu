@@ -1,0 +1,22 @@
+{
+  "name": "olms",
+  "version": "1.0.0",
+  "description": "An Online Leave Management System",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhishekmunie/olms-thehivedsu.git"
+  },
+  "dependencies": {
+    // "bower": "latest"
+  },
+  "author": "Abhishek Munie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abhishekmunie/olms-thehivedsu/issues"
+  },
+  "homepage": "https://github.com/abhishekmunie/olms-thehivedsu#readme"
+}
