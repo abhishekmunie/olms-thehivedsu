@@ -10,7 +10,7 @@ import org.apache.commons.dbutils.DbUtils;
 
 import cf.thehivedsu.olms.bean.CredentialBean;
 import cf.thehivedsu.olms.bean.EmployeeBean;
-import cf.thehivedsu.olms.resource.DatabaseConnectionFactory;
+import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
 
 public class AuthenticationDAO {
 

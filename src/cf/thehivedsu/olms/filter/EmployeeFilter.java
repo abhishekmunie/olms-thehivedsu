@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import cf.thehivedsu.olms.URLConstants;
+import cf.thehivedsu.olms.auth.Auth;
 import cf.thehivedsu.olms.bean.SessionBean;
 
 /**
@@ -21,7 +22,7 @@ import cf.thehivedsu.olms.bean.SessionBean;
  */
 @WebFilter(dispatcherTypes = { DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD,
 		DispatcherType.INCLUDE, DispatcherType.ERROR }, asyncSupported = true, urlPatterns = { "/api/employee/*",
-				"/employee/*", "/api/manager/*", "/manager/*" })
+				"/employee/*" })
 public class EmployeeFilter implements Filter {
 
 	/**
@@ -44,10 +45,7 @@ public class EmployeeFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		if (request instanceof HttpServletRequest) {
-			HttpSession session = ((HttpServletRequest) request).getSession();
-			SessionBean sessionBean = (SessionBean) session.getAttribute("sessionBean");
-
-			if (sessionBean.getEmployeeID() > 0) {
+			if (Auth.isRequestFromEmployee(((HttpServletRequest) request))) {
 				chain.doFilter(request, response);
 				return;
 			}

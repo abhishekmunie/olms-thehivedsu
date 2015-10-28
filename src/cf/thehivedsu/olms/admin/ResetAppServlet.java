@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import cf.thehivedsu.olms.ScriptRunner;
 import cf.thehivedsu.olms.URLConstants;
 import cf.thehivedsu.olms.Utilities;
+import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
 
 /**
  * Servlet implementation class ResetAppServlet
@@ -82,7 +83,7 @@ public class ResetAppServlet extends HttpServlet {
 	public static void resetApp(InputStream initScriptInputStream) throws IOException, SQLException {
 		Connection conn = null;
 		try {
-			conn = Utilities.getSQLConnection();
+			conn = DatabaseConnectionFactory.getConnection();
 			ScriptRunner scriptRunner = new ScriptRunner(conn, false, false);
 			InputStreamReader reader = new InputStreamReader(initScriptInputStream);
 			scriptRunner.runScript(reader);

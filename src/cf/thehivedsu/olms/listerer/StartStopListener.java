@@ -24,7 +24,7 @@ public class StartStopListener implements ServletContextListener, ServletContext
 	 * @see ServletContextListener#contextInitialized(ServletContextEvent)
 	 */
 	public void contextInitialized(ServletContextEvent arg0) {
-		// TODO Auto-generated method stub
+		System.out.println(System.getenv());
 	}
 
 	/**

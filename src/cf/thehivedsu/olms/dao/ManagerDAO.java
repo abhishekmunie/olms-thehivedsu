@@ -9,7 +9,7 @@ import org.apache.commons.dbutils.BeanProcessor;
 import org.apache.commons.dbutils.DbUtils;
 
 import cf.thehivedsu.olms.bean.ManagerBean;
-import cf.thehivedsu.olms.resource.DatabaseConnectionFactory;
+import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
 
 public class ManagerDAO {
 

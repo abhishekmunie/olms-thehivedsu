@@ -3,7 +3,9 @@ package cf.thehivedsu.olms.auth;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import cf.thehivedsu.olms.bean.RequestBean;
 import cf.thehivedsu.olms.bean.SessionBean;
+import cf.thehivedsu.olms.manager.Manager;
 
 public class Auth {
 
@@ -12,5 +14,27 @@ public class Auth {
 		SessionBean sessionBean = (SessionBean) session.getAttribute("sessionBean");
 
 		return sessionBean.getEmployeeID() >= 0;
+	}
+	
+	public static boolean isRequestFromEmployee(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		SessionBean sessionBean = (SessionBean) session.getAttribute("sessionBean");
+
+		return sessionBean.getEmployeeID() > 0;
+		
+	}
+	
+	public static boolean isRequestFromManager(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		SessionBean sessionBean = (SessionBean) session.getAttribute("sessionBean");
+		
+		int employeeID = sessionBean.getEmployeeID();
+
+		if (employeeID > 0) {
+			RequestBean requestBean = (RequestBean) request.getAttribute("requestBean");
+			return requestBean.isManager();
+		}
+		
+		return false;
 	}
 }

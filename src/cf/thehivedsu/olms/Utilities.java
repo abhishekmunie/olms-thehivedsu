@@ -2,26 +2,11 @@ package cf.thehivedsu.olms;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class Utilities {
-
-	public static Connection getSQLConnection() throws SQLException {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-		return DriverManager.getConnection(CONFIG.LOCAL_MYSQL_URL, CONFIG.LOCAL_MYSQL_USER,
-				CONFIG.LOCAL_MYSQL_PASSWORD);
-	}
 
 	public static String urlEncodeUTF8(String s) {
 		try {

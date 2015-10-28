@@ -7,24 +7,24 @@
       extendNative: true
     });
     webshims.setOptions('forms', {
-      // lazyCustomMessages: true,
+      lazyCustomMessages: false,
       addValidators: true,
       iVal: {
         recheckDelay: 300,
         submitCheck: true,
         errorBoxClass: 'ws-errorbox col-sm-offset-3 col-sm-9',
         errorMessageClass: 'help-block',
-        // successWrapperClass: 'has-success',
-        // errorWrapperClass: 'has-error',
-        errorWrapperClass: 'ws-invalid',
-        successWrapperClass: 'ws-success',
+        successWrapperClass: 'has-success',
+        errorWrapperClass: 'has-error',
+        // errorWrapperClass: 'ws-invalid',
+        // successWrapperClass: 'ws-success',
         fx: 'slide',
         fieldWrapper: '.form-group'
       }
     });
     webshim.setOptions('forms-ext', {
         replaceUI: 'auto',
-        types: 'date',
+        types: 'date time datetime-local',
         date: {
             startView: 2,
             size: 2,
