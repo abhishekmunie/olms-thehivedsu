@@ -1,14 +1,11 @@
-package cf.thehivedsu.olms.resource;
-
-import java.sql.Connection;
-import java.sql.SQLException;
+package cf.thehivedsu.olms.resource.db;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class DatabaseConnectionFactory {
+public class JNDIDBDataSourceFactory {
 
 	private static volatile DataSource sharedDataSource;
 
@@ -23,7 +20,7 @@ public class DatabaseConnectionFactory {
 			throw new RuntimeException(jndiname + " is missing in JNDI!", e);
 		}
 	}
-
+ 
 	/**
 	 * @return the sharedDataSource
 	 */
@@ -37,10 +34,17 @@ public class DatabaseConnectionFactory {
 		}
 		return sharedDataSource;
 	}
-
-	public static Connection getConnection() throws SQLException {
-		Connection conn = getSharedDataSource().getConnection();
-		return conn;
+	
+	public static DataSource getDataSource() {
+		String jndiname = "jdbc/MainDB";
+		try {
+			Context initContext = new InitialContext();
+			Context envContext = (Context) initContext.lookup("java:/comp/env");
+			return (DataSource) envContext.lookup(jndiname);
+		} catch (NamingException e) {
+			// Handle error that it's not configured in JNDI.
+			throw new RuntimeException(jndiname + " is missing in JNDI!", e);
+		}
 	}
 
 }
