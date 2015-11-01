@@ -11,9 +11,14 @@ title: New Leave Application
     </label>
     <div class="col-sm-9">
       <select name="LeaveType" id="LeaveType" class="form-control input-sm" aria-required="true" required >
-      <option disabled>----- Select -----</option>
-      <option value="casual">Casual</option>
-      <option value="medical">Medical</option>
+        <option disabled>----- Select -----</option>
+        <option value="CL">Casual</option>
+        <option value="ML">Medical</option>
+        <option value="VL">Vacation</option>
+        <option value="SL">Study</option>
+        <option value="PC">Pregnancy/Child Care</option>
+        <option value="FR">Family Responsibility</option>
+        <option value="SL">Unpaid</option>
       </select>
       <p class="help-block">Help text.</p>
     </div>
