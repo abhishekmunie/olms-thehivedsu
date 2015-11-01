@@ -1,4 +1,4 @@
-package cf.thehivedsu.olms.test;
+package cf.thehivedsu.olms.test.db;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.dbutils.DbUtils;
 
-import cf.thehivedsu.olms.resource.DatabaseConnectionFactory;
+import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
 
 /**
  * Servlet implementation class SQLConnnectionPoolTest
  */
-@WebServlet("/_test/SQLConnectionDataSource")
+@WebServlet("/_test/db/DataSourceConnection")
 public class SQLConnectionDataSourceTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,8 +37,6 @@ public class SQLConnectionDataSourceTest extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("DATABASE_URL: " + System.getenv("DATABASE_URL"));
-
 		Connection conn = null;
 		PrintWriter out = response.getWriter();
 
