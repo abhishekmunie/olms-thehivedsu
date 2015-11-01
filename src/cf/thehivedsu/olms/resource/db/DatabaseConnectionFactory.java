@@ -20,7 +20,7 @@ public class DatabaseConnectionFactory {
 	public static Connection getJNDIConnection() throws SQLException {
 		return JNDIDBDataSourceFactory.getDataSource().getConnection();
 	}
-	
+
 	public static Connection getMySQLConnection() throws SQLException {
 		return MySQLDataSourceFactory.getDataSource().getConnection();
 	}

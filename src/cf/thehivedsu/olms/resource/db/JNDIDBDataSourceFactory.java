@@ -20,7 +20,7 @@ public class JNDIDBDataSourceFactory {
 			throw new RuntimeException(jndiname + " is missing in JNDI!", e);
 		}
 	}
- 
+
 	/**
 	 * @return the sharedDataSource
 	 */
@@ -34,7 +34,7 @@ public class JNDIDBDataSourceFactory {
 		}
 		return sharedDataSource;
 	}
-	
+
 	public static DataSource getDataSource() {
 		String jndiname = "jdbc/MainDB";
 		try {

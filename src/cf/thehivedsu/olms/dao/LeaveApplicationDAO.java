@@ -2,7 +2,7 @@ package cf.thehivedsu.olms.dao;
 
 /**
  * 
- * @author 
+ * @author
  *
  */
 public class LeaveApplicationDAO {

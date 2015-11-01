@@ -6,7 +6,7 @@ package cf.thehivedsu.olms.bean;
 import java.io.Serializable;
 
 /**
- * @author 
+ * @author
  *
  */
 public class LeaveApplicationBean implements Serializable {
@@ -23,5 +23,4 @@ public class LeaveApplicationBean implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 }

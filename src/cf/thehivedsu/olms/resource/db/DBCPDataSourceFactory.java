@@ -20,7 +20,6 @@ public class DBCPDataSourceFactory {
 
 		return ds;
 	}
-	
 	public static Connection getConnection() throws SQLException {
 		return getDataSource().getConnection();
 	}

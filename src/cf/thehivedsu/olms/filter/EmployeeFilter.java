@@ -21,8 +21,8 @@ import cf.thehivedsu.olms.bean.SessionBean;
  * Servlet Filter implementation class EmployeeFilter
  */
 @WebFilter(dispatcherTypes = { DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.FORWARD,
-		DispatcherType.INCLUDE, DispatcherType.ERROR }, asyncSupported = true, urlPatterns = { "/api/employee/*",
-				"/employee/*" })
+		DispatcherType.INCLUDE,
+		DispatcherType.ERROR }, asyncSupported = true, urlPatterns = { "/api/employee/*", "/employee/*" })
 public class EmployeeFilter implements Filter {
 
 	/**

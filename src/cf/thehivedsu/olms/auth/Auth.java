@@ -15,26 +15,26 @@ public class Auth {
 
 		return sessionBean.getEmployeeID() >= 0;
 	}
-	
+
 	public static boolean isRequestFromEmployee(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		SessionBean sessionBean = (SessionBean) session.getAttribute("sessionBean");
 
 		return sessionBean.getEmployeeID() > 0;
-		
+
 	}
-	
+
 	public static boolean isRequestFromManager(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		SessionBean sessionBean = (SessionBean) session.getAttribute("sessionBean");
-		
+
 		int employeeID = sessionBean.getEmployeeID();
 
 		if (employeeID > 0) {
 			RequestBean requestBean = (RequestBean) request.getAttribute("requestBean");
 			return requestBean.isManager();
 		}
-		
+
 		return false;
 	}
 }
