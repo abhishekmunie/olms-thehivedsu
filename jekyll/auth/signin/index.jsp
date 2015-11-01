@@ -30,8 +30,9 @@ title: Signin
     <div class="panel-body">
       <form action="" method="POST" class="form-signin ws-validate" role="form">
         <div class="form-group has-feedback">
-          <label for="inputEmail">Email</label>
-          <input type="text" name="username" class="form-control" id="inputEmail" placeholder="Enter your email" autofocus required /><span class="glyphicon glyphicon-ok form-control-feedback"></span><span class="glyphicon glyphicon-remove form-control-feedback"></span>
+          <label for="inputUsername">Username</label>
+          <input type="text" name="username" class="form-control" id="inputUsername" placeholder="Enter your username (e.g. steve)" autofocus required />
+          <span class="glyphicon glyphicon-ok form-control-feedback"></span><span class="glyphicon glyphicon-remove form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
           <label for="inputPassword">Password</label>
