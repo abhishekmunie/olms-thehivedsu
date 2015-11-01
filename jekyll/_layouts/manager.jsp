@@ -9,7 +9,7 @@ layout: default
   <div class="row">
     <div class="col-sm-3 col-md-2">
       <ul class="nav nav-pills nav-stacked nav-sidebar">
-        <li class="{% is_active /manager/index.html%}"><a href="/manager/">Dashboard</a></li>
+        <li class="{% is_active /manager/index.jsp%}"><a href="/manager/">Dashboard</a></li>
         <li role="presentation" class="divider"></li>
         <li class="{% is_active_level /manager/leave-requests/%}"><a href="/manager/leave-requests/">Leave Requests</a></li>
         <li class="{% is_active_level /manager/leaves-approved/%}"><a href="/manager/leaves-approved/">Approved Leaves</a></li>
