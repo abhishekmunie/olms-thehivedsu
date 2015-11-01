@@ -10,10 +10,10 @@ import org.apache.commons.dbcp2.BasicDataSource;
 public class DBCPDataSourceFactory {
 
 	public static DataSource getDataSource() {
-		DatabaseConfigBean config = new DatabaseConfigBean(null);
+		DatabaseConfigBean config = DatabaseConfigBean.getConfigFromEnvironmentVariables();
 		BasicDataSource ds = new BasicDataSource();
 
-		ds.setDriverClassName("com.mysql.jdbc.Driver");
+		ds.setDriverClassName(config.getDriverClassName());
 		ds.setUrl(config.getUrl());
 		ds.setUsername(config.getUsername());
 		ds.setPassword(config.getPassword());

@@ -18,10 +18,11 @@ public class DatabaseConfigBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1171322781068033011L;
 
+	private String url;
 	private String username;
 	private String password;
-	private String url;
-	
+	private String driverClassName = "com.mysql.jdbc.Driver";
+
 	/**
 	 * 
 	 */
@@ -29,22 +30,50 @@ public class DatabaseConfigBean implements Serializable {
 	}
 
 	/**
+	 * @param url
+	 * @param username
+	 * @param password
+	 */
+	public DatabaseConfigBean(String url, String username, String password) {
+		this.url = url;
+		this.username = username;
+		this.password = password;
+	}
+
+	/**
 	 * 
 	 * @param envVar
 	 */
-	public DatabaseConfigBean(String envVar) {
-		if (envVar == null) {
-			envVar = "DATABASE_URL";
-		}
+	public static DatabaseConfigBean getConfigFromEnvironmentVariables(String envVar) {
 		URI dbUri = null;
 		try {
 			dbUri = new URI(System.getenv(envVar));
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
-		this.username = dbUri.getUserInfo().split(":")[0];
-		this.password = dbUri.getUserInfo().split(":")[1];
-		this.url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+		String username = dbUri.getUserInfo().split(":")[0];
+		String password = dbUri.getUserInfo().split(":")[1];
+		String url = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+		return new DatabaseConfigBean(url, username, password);
+	}
+
+	public static DatabaseConfigBean getConfigFromEnvironmentVariables() {
+		return getConfigFromEnvironmentVariables("DATABASE_URL");
+	}
+
+	/**
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/**
+	 * @param url
+	 *            the url to set
+	 */
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	/**
@@ -78,17 +107,18 @@ public class DatabaseConfigBean implements Serializable {
 	}
 
 	/**
-	 * @return the url
+	 * @return the driverClassName
 	 */
-	public String getUrl() {
-		return url;
+	public String getDriverClassName() {
+		return driverClassName;
 	}
 
 	/**
-	 * @param url the url to set
+	 * @param driverClassName
+	 *            the driverClassName to set
 	 */
-	public void setUrl(String url) {
-		this.url = url;
+	public void setDriverClassName(String driverClassName) {
+		this.driverClassName = driverClassName;
 	}
-	
+
 }

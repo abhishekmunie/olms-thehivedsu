@@ -33,7 +33,7 @@ public class DatabaseConnectionFactory {
 			return null;
 		}
 
-		DatabaseConfigBean config = new DatabaseConfigBean(null);
+		DatabaseConfigBean config = DatabaseConfigBean.getConfigFromEnvironmentVariables();
 
 		return DriverManager.getConnection(config.getUrl(), config.getUsername(), config.getPassword());
 	}

@@ -8,9 +8,9 @@ public class MySQLDataSourceFactory {
 
 	public static DataSource getDataSource() {
 		MysqlDataSource mysqlDS = null;
-		
-		DatabaseConfigBean config = new DatabaseConfigBean(null);
-		
+
+		DatabaseConfigBean config = DatabaseConfigBean.getConfigFromEnvironmentVariables();
+
 		mysqlDS = new MysqlDataSource();
 		mysqlDS.setURL(config.getUrl());
 		mysqlDS.setUser(config.getUsername());
