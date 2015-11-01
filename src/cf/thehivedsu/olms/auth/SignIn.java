@@ -69,18 +69,16 @@ public class SignIn extends HttpServlet {
 		// username = username + System.getenv("COMPANY_DOMAIN");
 		// }
 
-		EmployeeBean employee;
-
+		int employeeId = -1;
 		if (Admin.authenticate(credential)) {
 			HttpSession session = request.getSession();
 			SessionBean sessionBean = (SessionBean) session.getAttribute("sessionBean");
 			sessionBean.setEmployeeID(0);
 			redirectAuthorized(request, response);
-		} else if ((employee = AuthenticationDAO.authenticateUser(credential)) != null) {
+		} else if ((employeeId = AuthenticationDAO.authenticateUser(credential)) != -1) {
 			HttpSession session = request.getSession();
-			session.setAttribute("employee", employee);
 			SessionBean sessionBean = (SessionBean) session.getAttribute("sessionBean");
-			sessionBean.setEmployeeID(employee.getId());
+			sessionBean.setEmployeeID(employeeId);
 			redirectAuthorized(request, response);
 		} else {
 			request.setAttribute("errorMessage", "InvalidCredentils");

@@ -1,44 +1,48 @@
 package cf.thehivedsu.olms.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.apache.commons.dbutils.BeanProcessor;
 import org.apache.commons.dbutils.DbUtils;
 
 import cf.thehivedsu.olms.bean.CredentialBean;
-import cf.thehivedsu.olms.bean.EmployeeBean;
 import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
 
 public class AuthenticationDAO {
 
-	private static final String authenticationQuery = "SELECT Employee.* FROM Credential INNER JOIN Employee ON Employee.id = Credential.employeeId WHERE `username` = ? AND `password` = ? ";
+	private static final String authenticationQuery = "{ call authenticate(?, ?) }";
 
-	public static EmployeeBean authenticateUser(CredentialBean credential) {
-		Connection conn = null;
-		PreparedStatement statement = null;
+	/**
+	 * Authenticates the user based on passed credential by calling the
+	 * authenticate procedure on the database with the credentials.
+	 * 
+	 * @param credential
+	 *            Users credentials to be authenticated
+	 * @return employee id of the user if user authentic else -1.
+	 */
+	public static int authenticateUser(CredentialBean credential) {
 		ResultSet resultSet = null;
-		try {
-			conn = DatabaseConnectionFactory.getConnection();
-			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+		try (Connection conn = DatabaseConnectionFactory.getConnection();
+				CallableStatement statement = conn.prepareCall(authenticationQuery, ResultSet.TYPE_FORWARD_ONLY,
+						ResultSet.CONCUR_READ_ONLY);) {
+			// conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
-			statement = conn.prepareStatement(authenticationQuery);
 			statement.setString(1, credential.getUsername());
 			statement.setString(2, credential.getPassword());
 
 			resultSet = statement.executeQuery();
-			BeanProcessor bp = new BeanProcessor();
+
 			if (resultSet.first()) {
-				EmployeeBean employee = bp.toBean(resultSet, EmployeeBean.class);
-				return employee;
+				int employeeId = resultSet.getInt(1);
+				return (employeeId != 0) ? employeeId : -1;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			DbUtils.closeQuietly(conn, statement, resultSet);
+			DbUtils.closeQuietly(resultSet);
 		}
-		return null;
+		return -1;
 	}
 }
