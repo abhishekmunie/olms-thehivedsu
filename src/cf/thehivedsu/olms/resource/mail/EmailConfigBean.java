@@ -32,7 +32,7 @@ public class EmailConfigBean implements Serializable {
 		this.from = from;
 	}
 
-	public static EmailConfigBean getEmailConfigFromEnvironmentVariables() {
+	public static EmailConfigBean getConfigFromEnvironmentVariables() {
 		String username = System.getenv("SYSTEM_EMAIL_SIGNIN_ID");
 		String password = System.getenv("SYSTEM_EMAIL_SIGNIN_PASSWORD");
 		String from = System.getenv("SYSTEM_EMAIL");
