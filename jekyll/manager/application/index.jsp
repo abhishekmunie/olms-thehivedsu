@@ -2,7 +2,6 @@
 layout: manager
 title: "Application Details"
 ---
-
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Application ID: 1341324213</h3>
@@ -33,17 +32,7 @@ title: "Application Details"
     <h3 class="panel-title">Previous Leaves</h3>
   </div>
   <div class="panel-body">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Application ID</th>
-          <th>Type</th>
-          <th>Start Date</th>
-          <th>End Date</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <% Vector<LeaveApplicationBean> leaveApplications = LeaveApplicationDAO.getLeavesRejectedByManager(sessionBean.getEmployeeID()); %>
+    {% include application-list.jsp %}
   </div>
 </div>
