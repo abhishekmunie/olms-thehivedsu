@@ -2,6 +2,8 @@ package cf.thehivedsu.olms.bean;
 
 import java.io.Serializable;
 
+import cf.thehivedsu.olms.dao.ManagerDAO;
+
 public class EmployeeBean implements Serializable {
 
 	/**
@@ -94,6 +96,10 @@ public class EmployeeBean implements Serializable {
 		this.familyName = familyName;
 	}
 
+	public String getFullName() {
+		return givenName + " " + familyName;
+	}
+
 	/**
 	 * @return the email
 	 */
@@ -178,11 +184,10 @@ public class EmployeeBean implements Serializable {
 	 * @return
 	 */
 	public ManagerBean getManager() {
-		if (this.manager != null) {
-			return manager;
+		if (managerId > 0 && manager == null) {
+			manager = ManagerDAO.managerWithId(managerId);
 		}
-
-		return null;
+		return manager;
 	}
 
 }
