@@ -11,8 +11,10 @@ layout: default
       <ul class="nav nav-pills nav-stacked nav-sidebar">
         <li class="{% is_active /employee/index.jsp%}"><a href="/employee/">Dashboard</a></li>
         <li role="presentation" class="divider"></li>
+        <% if (employeeBean.hasManager()) { %>
         <li class="{% is_active_level /employee/new-application/%}"><a href="/employee/new-application/">New Application</a></li>
         <li class="{% is_active_level /employee/status/%}"><a href="/employee/status/">Status</a></li>
+        <% } %>
       </ul>
     </div>
     <div class="col-sm-9 col-md-10 main">
