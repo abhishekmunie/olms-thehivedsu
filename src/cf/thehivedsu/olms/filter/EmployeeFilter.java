@@ -11,11 +11,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import cf.thehivedsu.olms.URLConstants;
 import cf.thehivedsu.olms.auth.Auth;
-import cf.thehivedsu.olms.bean.SessionBean;
 
 /**
  * Servlet Filter implementation class EmployeeFilter

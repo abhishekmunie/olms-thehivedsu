@@ -15,7 +15,7 @@ public class EmployeeDAO {
 
 	private static final String employeeWithIdQuery = "SELECT * FROM Employee WHERE `id` = ? ";
 
-	public static EmployeeBean employeeWithId(int employeeID) {
+	public static EmployeeBean employeeWithId(int employeeId) {
 		Connection conn = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -24,7 +24,7 @@ public class EmployeeDAO {
 			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
 			statement = conn.prepareStatement(employeeWithIdQuery);
-			statement.setInt(1, employeeID);
+			statement.setInt(1, employeeId);
 
 			resultSet = statement.executeQuery();
 			BeanProcessor bp = new BeanProcessor();
@@ -32,7 +32,7 @@ public class EmployeeDAO {
 				EmployeeBean employee = bp.toBean(resultSet, EmployeeBean.class);
 				return employee;
 			}
-			System.out.println("Employee wit id <" + employeeID + "> not found.");
+			System.out.println("Employee wit id <" + employeeId + "> not found.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -29,9 +29,9 @@ public class ManagerFilter implements Filter {
 	}
 
 	/**
-	 * @see Filter#destroy()
+	 * @see Filter#init(FilterConfig)
 	 */
-	public void destroy() {
+	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
 	}
 
@@ -51,9 +51,9 @@ public class ManagerFilter implements Filter {
 	}
 
 	/**
-	 * @see Filter#init(FilterConfig)
+	 * @see Filter#destroy()
 	 */
-	public void init(FilterConfig fConfig) throws ServletException {
+	public void destroy() {
 		// TODO Auto-generated method stub
 	}
 

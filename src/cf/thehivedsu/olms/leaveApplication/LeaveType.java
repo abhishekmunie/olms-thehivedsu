@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cf.thehivedsu.olms.employee;
+package cf.thehivedsu.olms.leaveApplication;
 
 /**
  * @author abhishekmunie

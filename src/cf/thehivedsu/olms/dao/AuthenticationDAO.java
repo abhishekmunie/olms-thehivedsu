@@ -27,7 +27,7 @@ public class AuthenticationDAO {
 		try (Connection conn = DatabaseConnectionFactory.getConnection();
 				CallableStatement statement = conn.prepareCall(authenticationQuery, ResultSet.TYPE_FORWARD_ONLY,
 						ResultSet.CONCUR_READ_ONLY);) {
-			// conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
 			statement.setString(1, credential.getUsername());
 			statement.setString(2, credential.getPassword());

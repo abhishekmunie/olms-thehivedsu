@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 
 import cf.thehivedsu.olms.bean.RequestBean;
 import cf.thehivedsu.olms.bean.SessionBean;
-import cf.thehivedsu.olms.manager.Manager;
 
 public class Auth {
 

@@ -16,7 +16,7 @@ public class EmployeeBean implements Serializable {
 	private String contactNumber;
 	private String dateOfBirth;
 	private String address;
-	private int managerID;
+	private int managerId;
 	private ManagerBean manager;
 
 	/**
@@ -46,7 +46,7 @@ public class EmployeeBean implements Serializable {
 		this.contactNumber = contactNumber;
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
-		this.managerID = managerID;
+		this.managerId = managerID;
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class EmployeeBean implements Serializable {
 	 * @return the managerID
 	 */
 	public int getManagerID() {
-		return managerID;
+		return managerId;
 	}
 
 	/**
@@ -166,7 +166,11 @@ public class EmployeeBean implements Serializable {
 	 *            the managerID to set
 	 */
 	public void setManagerID(int managerID) {
-		this.managerID = managerID;
+		this.managerId = managerID;
+	}
+
+	public boolean hasManager() {
+		return this.managerId != 0;
 	}
 
 	/**
