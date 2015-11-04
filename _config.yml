@@ -63,7 +63,7 @@ imports :
     bootstrap_theme: /bower_components/bootstrap/dist/css/bootstrap-theme.min.css
     font_awesome:    /bower_components/font-awesome/css/font-awesome.min.css
     main:            /css/main.css
-  modernizr: /bower_components/modernizer/modernizr.js
+  # modernizr: /bower_components/modernizer/modernizr.js
   js :
     bootstrap: /bower_components/bootstrap/dist/js/bootstrap.min.js
     webshim:   /bower_components/webshim/js-webshim/minified/polyfiller.js
