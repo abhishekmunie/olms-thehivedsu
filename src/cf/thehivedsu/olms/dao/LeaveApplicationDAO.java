@@ -110,7 +110,7 @@ public class LeaveApplicationDAO {
 		return null;
 	}
 
-	private static final String getPendingLeavesForManagerSQL = "SELECT LeaveApplication.*, Employee.* FROM Manager INNER JOIN Employee ON Employee.managerId = Manager.id INNER JOIN LeaveApplication ON LeaveApplication.employeeID = Employee.id WHERE Manager.employeeID = ?";
+	private static final String getPendingLeavesForManagerSQL = "SELECT LeaveApplication.*, Employee.* FROM Manager INNER JOIN Employee ON Employee.managerId = Manager.id INNER JOIN LeaveApplication ON LeaveApplication.employeeID = Employee.id WHERE Manager.employeeID = ? AND LeaveApplication.`status` = \"P\"";
 
 	public static Vector<LeaveApplicationBean> getPendingLeavesForManager(int managersEmployeeId) {
 		ResultSet rs = null;

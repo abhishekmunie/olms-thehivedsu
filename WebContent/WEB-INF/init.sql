@@ -220,6 +220,7 @@ INSERT INTO `Employee` (`id`, `givenName`, `familyName`, `email`, `contactNumber
 INSERT INTO `Employee` (`id`, `givenName`, `familyName`, `email`, `contactNumber`, `dateOfBirth`, `address`, `managerId`) VALUES (13, 'Shruthi', 'T', 'shruthi1293@gmail.com', '54425465768', '1992-01-02', 'Hennur', 4);
 INSERT INTO `Employee` (`id`, `givenName`, `familyName`, `email`, `contactNumber`, `dateOfBirth`, `address`, `managerId`) VALUES (14, 'Deepthi', 'B E', 'deepthibe@gmail.com', '64543546576', '1992-02-03', 'K R Puram', 4);
 INSERT INTO `Employee` (`id`, `givenName`, `familyName`, `email`, `contactNumber`, `dateOfBirth`, `address`, `managerId`) VALUES (15, 'Alfred', 'Pennyworth', 'contact@abhishekmunie.com', '1111111111', '1992-04-05', 'Gotham', 1);
+INSERT INTO `Employee` (`id`, `givenName`, `familyName`, `email`, `contactNumber`, `dateOfBirth`, `address`, `managerId`) VALUES (16, 'Shankar', 'D', '123dsushankar@gmail.com', '4354657683', '1992-06-07', 'Kudlu Gate', 3);
 
 COMMIT;
 
@@ -256,10 +257,10 @@ COMMIT;
 START TRANSACTION;
 INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('abhishekmunie', 'codenameolms', 1, NULL);
 INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('raghuraju406@gmail.com', 'codenameraghu', 2, NULL);
-INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('gksaiprasad@gmail.com', 'codenamesai', 3, NULL);
+INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('gksaiprasad@gmail.com', 'dsu@12345', 3, NULL);
 INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('tejumouli@gmail.com', 'rvt', 4, NULL);
 INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('grkallegowda@gmail.com', 'codenamegowda', 5, NULL);
-INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('123balajiss123@gmail.com', '123balajiss123', 6, NULL);
+INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('123balajiss123@gmail.com', 'dsu@12345', 6, NULL);
 INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('tejas@gmail.com', 'codenametejas', 7, NULL);
 INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('saipra@gmail.com', 'codenamepra', 8, NULL);
 INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('ranga@gmail.com', 'codenameranga', 9, NULL);
@@ -269,6 +270,7 @@ INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VAL
 INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('shruthi1293@gmail.com', 'shruthi1293', 13, NULL);
 INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('deepthibe@gmail.com', 'deepthibe', 14, NULL);
 INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('alfred', 'batman', 15, NULL);
+INSERT INTO `Credential` (`username`, `password`, `employeeId`, `lastLogin`) VALUES ('123dsushankar@gmail.com', 'dsu@12345', 16, NULL);
 
 COMMIT;
 
