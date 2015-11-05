@@ -59,6 +59,7 @@ jsp_imports:
   </div>
 </div>
 
+<% if (currentLeaveApplication.getStatus().equals("P")) { %>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Previous Leaves</h3>
@@ -68,3 +69,4 @@ jsp_imports:
     {% include application-list.jsp hideStatus="true" hideEmployeeId="true" %}
   </div>
 </div>
+<% } %>
