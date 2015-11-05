@@ -110,7 +110,37 @@ public class LeaveApplicationDAO {
 		return null;
 	}
 
-	private static final String getApprovedLeavesForEmployeeQuery = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE `status` = \"A\" AND employeeId = ? ";
+	private static final String getPendingLeavesForManagerSQL = "SELECT LeaveApplication.*, Employee.* FROM Manager INNER JOIN Employee ON Employee.managerId = Manager.id INNER JOIN LeaveApplication ON LeaveApplication.employeeID = Employee.id WHERE Manager.employeeID = ?";
+
+	public static Vector<LeaveApplicationBean> getPendingLeavesForManager(int managersEmployeeId) {
+		ResultSet rs = null;
+		try (Connection connection = DatabaseConnectionFactory.getConnection();
+				PreparedStatement st = connection.prepareStatement(getPendingLeavesForManagerSQL);) {
+			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+
+			Vector<LeaveApplicationBean> leaveBeans = new Vector<>();
+			st.setInt(1, managersEmployeeId);
+			rs = st.executeQuery();
+
+			BeanProcessor bp = new BeanProcessor();
+			while (rs.next()) {
+				LeaveApplicationBean leaveApplicationBean = bp.toBean(rs, LeaveApplicationBean.class);
+				EmployeeBean employeeBean = bp.toBean(rs, EmployeeBean.class);
+				leaveApplicationBean.setId(rs.getInt(1));
+				employeeBean.setId(leaveApplicationBean.getEmployeeId());
+				leaveApplicationBean.setEmployee(employeeBean);
+				leaveBeans.addElement(leaveApplicationBean);
+			}
+			return leaveBeans;
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+		}
+		return null;
+	}
+
+	private static final String getApprovedLeavesForEmployeeSQL = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE `status` = \"A\" AND employeeId = ? ";
 
 	public static Vector<LeaveApplicationBean> getApprovedLeavesForEmployee(int employeeId) {
 		ResultSet rs = null;
@@ -198,6 +228,28 @@ public class LeaveApplicationDAO {
 			DbUtils.closeQuietly(rs);
 		}
 		return null;
+	}
+
+	private static final String setApplicationStatusSQL = "UPDATE LeaveApplication SET `status` = ?, `approverId` = ? WHERE `id` = ?";
+
+	public static int setApplicationStatus(int applicationId, String status, int approverId) {
+		ResultSet rs = null;
+		try (Connection connection = DatabaseConnectionFactory.getConnection();
+				PreparedStatement st = connection.prepareStatement(setApplicationStatusSQL);) {
+			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+
+			st.setString(1, status);
+			st.setInt(2, approverId);
+			st.setInt(3, applicationId);
+
+			int affected = st.executeUpdate();
+			return affected;
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+		}
+		return -1;
 	}
 
 }

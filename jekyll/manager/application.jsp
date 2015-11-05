@@ -7,16 +7,34 @@ jsp_imports:
   cf.thehivedsu.olms.dao.LeaveApplicationDAO: page
 ---
 <%
-  String urlComponents[] = request.getRequestURI().split("/");
-  int applicationId = -1;
-  try { applicationId = Integer.parseInt(urlComponents[3]);
-  } catch (Exception e) { response.sendError(404); return; }
+  int applicationId = (int) request.getAttribute("applicationId");
   LeaveApplicationBean currentLeaveApplication = LeaveApplicationDAO.getLeaveApplicationWithId(applicationId);
   request.setAttribute("leaveApplicationBean", currentLeaveApplication);
   request.setAttribute("leaveApplicationApplierBean", currentLeaveApplication.getEmployee());
  %>
 <jsp:useBean id="leaveApplicationBean" scope="request" class="cf.thehivedsu.olms.bean.LeaveApplicationBean"/>
 <jsp:useBean id="leaveApplicationApplierBean" scope="request" class="cf.thehivedsu.olms.bean.EmployeeBean"/>
+
+
+<%
+  String successmsg = (String)request.getAttribute("successMessage");
+  String errormsg = (String)request.getAttribute("errorMessage");
+  Exception ex = (Exception)(request.getAttribute("errorException"));
+  if (successmsg != null) {
+%>
+<div class="alert alert-success alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Success!</strong> <%= (successmsg.equals("")) ? "Login Successfull." : successmsg %>
+</div>
+<% } else if (errormsg != null) { %>
+<div class="alert alert-danger alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <details>
+    <summary><strong>Error!</strong> <%=errormsg%></summary>
+    <p><%=(ex != null) ? ex.getLocalizedMessage() : ""%></p>
+  </details>
+</div>
+<% } %>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Application ID: <%=applicationId%></h3>
@@ -26,20 +44,16 @@ jsp_imports:
       {% include application.jsp %}
 
       <% if (currentLeaveApplication.getStatus().equals("P")) { %>
-      <div class="form-group">
-        <div class="col-sm-6">
-          <form action="/" method="post">
-            <input type="hidden" name="action" value="validate" /> <input
-              type="submit" value="Accept" class="btn btn-primary btn-block" />
-          </form>
+      <form action="" method="post">
+        <div class="form-group">
+          <div class="col-sm-6">
+              <input type="submit" name="action" value="Accept" class="btn btn-primary btn-block" />
+          </div>
+          <div class="col-sm-6">
+              <input type="submit" name="action" value="Reject" class="btn btn-danger btn-block" />
+          </div>
         </div>
-        <div class="col-sm-6">
-          <form action="/" method="post">
-            <input type="hidden" name="action" value="reject" /> <input
-              type="submit" value="Reject" class="btn btn-danger btn-block" />
-          </form>
-        </div>
-      </div>
+      </form>
       <% } %>
     </div>
   </div>
