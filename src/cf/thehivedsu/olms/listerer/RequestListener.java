@@ -9,8 +9,11 @@ import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import cf.thehivedsu.olms.bean.RequestBean;
+import cf.thehivedsu.olms.bean.SessionBean;
+import cf.thehivedsu.olms.employee.Employee;
 
 /**
  * Application Lifecycle Listener implementation class RequestListener
@@ -33,6 +36,11 @@ public class RequestListener implements ServletRequestAttributeListener, Servlet
 		ServletRequest request = event.getServletRequest();
 		if (request instanceof HttpServletRequest) {
 			request.setAttribute("requestBean", new RequestBean((HttpServletRequest) request));
+			HttpSession session = ((HttpServletRequest) request).getSession();
+			SessionBean sessionBean = (SessionBean) session.getAttribute("sessionBean");
+			if (sessionBean.getEmployeeID() > 0) {
+				request.setAttribute("employeeBean", Employee.employeeWithId(sessionBean.getEmployeeID()));
+			}
 		}
 	}
 
