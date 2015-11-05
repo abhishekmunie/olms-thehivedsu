@@ -50,6 +50,36 @@ public class LeaveApplicationDAO {
 		return -1;
 	}
 
+	private static final String getLeaveApplicationWithIdQuery = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE LeaveApplication.id = ? ";
+
+	public static LeaveApplicationBean getLeaveApplicationWithId(int id) {
+		ResultSet rs = null;
+		try (Connection connection = DatabaseConnectionFactory.getConnection();
+				PreparedStatement st = connection.prepareStatement(getLeaveApplicationWithIdQuery);) {
+			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+
+			Vector<LeaveApplicationBean> leaveBeans = new Vector<>();
+			st.setInt(1, id);
+			rs = st.executeQuery();
+
+			BeanProcessor bp = new BeanProcessor();
+			while (rs.first()) {
+				LeaveApplicationBean leaveApplicationBean = bp.toBean(rs, LeaveApplicationBean.class);
+				EmployeeBean employeeBean = bp.toBean(rs, EmployeeBean.class);
+				leaveApplicationBean.setId(rs.getInt(1));
+				employeeBean.setId(leaveApplicationBean.getEmployeeId());
+				leaveApplicationBean.setEmployee(employeeBean);
+				leaveBeans.addElement(leaveApplicationBean);
+				return leaveApplicationBean;
+			}
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} finally {
+			DbUtils.closeQuietly(rs);
+		}
+		return null;
+	}
+
 	private static final String getLeavesForEmployeeQuery = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE employeeId = ? ";
 
 	public static Vector<LeaveApplicationBean> getLeavesForEmployee(int employeeId) {

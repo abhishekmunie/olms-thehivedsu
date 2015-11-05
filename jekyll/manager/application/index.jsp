@@ -1,7 +1,22 @@
 ---
 layout: manager
 title: "Application Details"
+jsp_imports:
+  cf.thehivedsu.olms.bean.LeaveApplicationBean: page
+  cf.thehivedsu.olms.bean.EmployeeBean: page
+  cf.thehivedsu.olms.dao.LeaveApplicationDAO: page
 ---
+<%
+  String urlComponents[] = request.getRequestURI().split("/");
+  int applicationId = -1;
+  try { applicationId = Integer.parseInt(urlComponents[3]);
+  } catch (Exception e) { response.sendError(404); return; }
+  LeaveApplicationBean currentLeaveApplication = LeaveApplicationDAO.getLeaveApplicationWithId(applicationId);
+  request.setAttribute("leaveApplicationBean", currentLeaveApplication);
+  request.setAttribute("leaveApplicationApplierBean", currentLeaveApplication.getEmployee());
+ %>
+<jsp:useBean id="leaveApplicationBean" scope="request" class="cf.thehivedsu.olms.bean.LeaveApplicationBean"/>
+<jsp:useBean id="leaveApplicationApplierBean" scope="request" class="cf.thehivedsu.olms.bean.EmployeeBean"/>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Application ID: <%=applicationId%></h3>
