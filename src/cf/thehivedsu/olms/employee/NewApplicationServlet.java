@@ -80,13 +80,14 @@ public class NewApplicationServlet extends HttpServlet {
 			} else {
 				request.setAttribute("successMessage",
 						"Leave Application was submitted successflly. Application ID: " + applicationId + ".");
+
 				EmployeeBean employee = (EmployeeBean) request.getAttribute("employeeBean");
 				ManagerBean manager = employee.getManager();
 				EmployeeBean managersEmployeeData = manager.getEmployeeData();
 				String recipient = managersEmployeeData.getEmail();
 				String subject = "New Leave Request from Employee (" + employeeId + ")";
 				String message = "Dear " + managersEmployeeData.getFullName() + ",\n" + employee.getFullName()
-						+ " sent you a new Leave Request. https://http://olms.thehivedsu.cf/manager/application/"
+						+ " sent you a new Leave Request. https://olms.thehivedsu.cf/manager/application/"
 						+ applicationId;
 				Email.sendSimpleEmailInBackground(recipient, subject, message);
 			}

@@ -15,11 +15,11 @@ public class ManagerBean implements Serializable {
 	 * Auto Generated Serial Version ID
 	 */
 	private static final long serialVersionUID = -4297838203594748813L;
-	
+
 	private int id;
 	private int employeeId;
 	private String teamName;
-	
+
 	private EmployeeBean employeeData;
 
 	public ManagerBean() {
@@ -45,7 +45,8 @@ public class ManagerBean implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -59,7 +60,8 @@ public class ManagerBean implements Serializable {
 	}
 
 	/**
-	 * @param employeeId the employeeId to set
+	 * @param employeeId
+	 *            the employeeId to set
 	 */
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
@@ -73,7 +75,8 @@ public class ManagerBean implements Serializable {
 	}
 
 	/**
-	 * @param teamName the teamName to set
+	 * @param teamName
+	 *            the teamName to set
 	 */
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
@@ -90,7 +93,8 @@ public class ManagerBean implements Serializable {
 	}
 
 	/**
-	 * @param employeeData the employeeData to set
+	 * @param employeeData
+	 *            the employeeData to set
 	 */
 	public void setEmployeeData(EmployeeBean employeeData) {
 		this.employeeData = employeeData;

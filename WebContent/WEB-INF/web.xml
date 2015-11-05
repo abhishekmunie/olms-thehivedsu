@@ -36,19 +36,6 @@
 		<url-pattern>/employee/application/*</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>managerApplictionDetails</servlet-name>
-		<jsp-file>/manager/application/index.jsp</jsp-file>
-		<init-param>
-			<param-name>detailsPage</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>managerApplictionDetails</servlet-name>
-		<url-pattern>/manager/application/*</url-pattern>
-	</servlet-mapping>
-
 	<!-- Error Page Configs -->
 	<error-page>
 		<error-code>404</error-code>

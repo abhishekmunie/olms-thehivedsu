@@ -34,7 +34,6 @@ public class LeaveApplicationBean implements Serializable {
 	 * 
 	 */
 	public LeaveApplicationBean() {
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
