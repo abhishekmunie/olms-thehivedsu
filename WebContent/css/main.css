@@ -98,10 +98,6 @@ textarea {
 @viewport {
  width: device-width; }
 
-/* Sticky footer styles
--------------------------------------------------- */
-
-
 html,
 body {
   min-height: 100%;
@@ -208,16 +204,12 @@ body {
   visibility: hidden;
 }
 
-.has-success {
-  .glyphicon-ok,
-  .fa-check-square-o {
-    visibility: visible;
-  }
+.has-success .glyphicon-ok,
+.has-success .fa-check-square-o {
+  visibility: visible;
 }
-.has-error {
-  .glyphicon-remove {
-    visibility: visible;
-  }
+.has-error .glyphicon-remove {
+  visibility: visible;
 }
 
 input[type=date],
