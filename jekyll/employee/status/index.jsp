@@ -7,4 +7,4 @@ jsp_imports:
   cf.thehivedsu.olms.dao.LeaveApplicationDAO: page
 ---
 <% Vector<LeaveApplicationBean> leaveApplications = LeaveApplicationDAO.getLeavesForEmployee(sessionBean.getEmployeeID()); %>
-{% include application-list.jsp hideEmployeeId="true" %}
+{% include application-list.jsp hideEmployeeDetails="true" %}
