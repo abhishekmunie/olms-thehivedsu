@@ -115,10 +115,6 @@ body {
   text-align: left !important;
 }
 
-body {
- /* Margin bottom by footer height */
- margin-bottom: 60px; }
-
 #footer {
  position: absolute;
  bottom: 0;
@@ -183,7 +179,7 @@ html {
 
 body {
 	/* Margin bottom by footer height */
-	margin-bottom: 60px;
+	padding-bottom: 60px;
 }
 
 #site-footer {
