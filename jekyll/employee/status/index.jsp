@@ -1,19 +1,10 @@
 ---
 layout: employee
 title: Application Status
+jsp_imports:
+  cf.thehivedsu.olms.bean.LeaveApplicationBean: page
+  cf.thehivedsu.olms.bean.EmployeeBean: page
+  cf.thehivedsu.olms.dao.LeaveApplicationDAO: page
 ---
-
-<table class="table table-striped table-hover">
-  <thead>
-   <tr>
-    <th>Application ID</th>
-    <th>Type</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-    <th>Status</th>
-  </tr>
-  </thead>
-  <tbody>
-
-  </tbody>
-</table>
+<% Vector<LeaveApplicationBean> leaveApplications = LeaveApplicationDAO.getLeavesForEmployee(sessionBean.getEmployeeID()); %>
+{% include application-list.jsp hideEmployeeId="true" %}
