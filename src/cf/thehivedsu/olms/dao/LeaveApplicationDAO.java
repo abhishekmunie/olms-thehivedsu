@@ -21,12 +21,12 @@ import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
  */
 public class LeaveApplicationDAO {
 
-	private static String insertQuery = "INSERT INTO `olms`.`LeaveApplication` (`employeeId`, `fromDateTime`, `toDateTime`, `type`, `reason`) VALUES (?, ?, ?, ?, ?);";
+	private static String insertSQL = "INSERT INTO `olms`.`LeaveApplication` (`employeeId`, `fromDateTime`, `toDateTime`, `type`, `reason`) VALUES (?, ?, ?, ?, ?);";
 
 	public static int insert(LeaveApplicationBean leaveApplication) {
 		ResultSet keys = null;
 		try (Connection connection = DatabaseConnectionFactory.getConnection();
-				PreparedStatement ps = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);) {
+				PreparedStatement ps = connection.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 
 			ps.setInt(1, leaveApplication.getEmployeeId());
@@ -50,12 +50,12 @@ public class LeaveApplicationDAO {
 		return -1;
 	}
 
-	private static final String getLeaveApplicationWithIdQuery = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE LeaveApplication.id = ? ";
+	private static final String getLeaveApplicationWithIdSQL = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE LeaveApplication.id = ? ";
 
 	public static LeaveApplicationBean getLeaveApplicationWithId(int id) {
 		ResultSet rs = null;
 		try (Connection connection = DatabaseConnectionFactory.getConnection();
-				PreparedStatement st = connection.prepareStatement(getLeaveApplicationWithIdQuery);) {
+				PreparedStatement st = connection.prepareStatement(getLeaveApplicationWithIdSQL);) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
 			Vector<LeaveApplicationBean> leaveBeans = new Vector<>();
@@ -80,12 +80,12 @@ public class LeaveApplicationDAO {
 		return null;
 	}
 
-	private static final String getLeavesForEmployeeQuery = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE employeeId = ? ";
+	private static final String getLeavesForEmployeeSQL = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE employeeId = ? ";
 
 	public static Vector<LeaveApplicationBean> getLeavesForEmployee(int employeeId) {
 		ResultSet rs = null;
 		try (Connection connection = DatabaseConnectionFactory.getConnection();
-				PreparedStatement st = connection.prepareStatement(getLeavesForEmployeeQuery);) {
+				PreparedStatement st = connection.prepareStatement(getLeavesForEmployeeSQL);) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
 			Vector<LeaveApplicationBean> leaveBeans = new Vector<>();
@@ -145,7 +145,7 @@ public class LeaveApplicationDAO {
 	public static Vector<LeaveApplicationBean> getApprovedLeavesForEmployee(int employeeId) {
 		ResultSet rs = null;
 		try (Connection connection = DatabaseConnectionFactory.getConnection();
-				PreparedStatement st = connection.prepareStatement(getApprovedLeavesForEmployeeQuery);) {
+				PreparedStatement st = connection.prepareStatement(getApprovedLeavesForEmployeeSQL);) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
 			Vector<LeaveApplicationBean> leaveBeans = new Vector<>();
@@ -170,12 +170,12 @@ public class LeaveApplicationDAO {
 		return null;
 	}
 
-	private static final String getLeavesApprovedByManagerQuery = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE `status` = \"A\" AND approverId = ? ";
+	private static final String getLeavesApprovedByManagerSQL = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE `status` = \"A\" AND approverId = ? ";
 
 	public static Vector<LeaveApplicationBean> getLeavesApprovedByManager(int managerEmployeeID) {
 		ResultSet rs = null;
 		try (Connection connection = DatabaseConnectionFactory.getConnection();
-				PreparedStatement st = connection.prepareStatement(getLeavesApprovedByManagerQuery);) {
+				PreparedStatement st = connection.prepareStatement(getLeavesApprovedByManagerSQL);) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
 			Vector<LeaveApplicationBean> leaveBeans = new Vector<>();
@@ -200,12 +200,12 @@ public class LeaveApplicationDAO {
 		return null;
 	}
 
-	private static final String getLeavesRejectedByManagerQuery = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE `status` = \"R\" AND approverId = ? ";
+	private static final String getLeavesRejectedByManagerSQL = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE `status` = \"R\" AND approverId = ? ";
 
 	public static Vector<LeaveApplicationBean> getLeavesRejectedByManager(int managerEmployeeID) {
 		ResultSet rs = null;
 		try (Connection connection = DatabaseConnectionFactory.getConnection();
-				PreparedStatement st = connection.prepareStatement(getLeavesRejectedByManagerQuery);) {
+				PreparedStatement st = connection.prepareStatement(getLeavesRejectedByManagerSQL);) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
 			Vector<LeaveApplicationBean> leaveBeans = new Vector<>();

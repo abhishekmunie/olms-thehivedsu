@@ -13,7 +13,7 @@ import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
 
 public class EmployeeDAO {
 
-	private static final String employeeWithIdQuery = "SELECT * FROM Employee WHERE `id` = ? ";
+	private static final String employeeWithIdSQL = "SELECT * FROM Employee WHERE `id` = ? ";
 
 	public static EmployeeBean employeeWithId(int employeeId) {
 		Connection conn = null;
@@ -23,7 +23,7 @@ public class EmployeeDAO {
 			conn = DatabaseConnectionFactory.getConnection();
 			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
-			statement = conn.prepareStatement(employeeWithIdQuery);
+			statement = conn.prepareStatement(employeeWithIdSQL);
 			statement.setInt(1, employeeId);
 
 			resultSet = statement.executeQuery();

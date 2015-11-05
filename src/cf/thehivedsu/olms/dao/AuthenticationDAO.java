@@ -12,7 +12,7 @@ import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
 
 public class AuthenticationDAO {
 
-	private static final String authenticationQuery = "{ call authenticate(?, ?) }";
+	private static final String authenticationSQL = "{ call authenticate(?, ?) }";
 
 	/**
 	 * Authenticates the user based on passed credential by calling the
@@ -25,7 +25,7 @@ public class AuthenticationDAO {
 	public static int authenticateUser(CredentialBean credential) {
 		ResultSet resultSet = null;
 		try (Connection conn = DatabaseConnectionFactory.getConnection();
-				CallableStatement statement = conn.prepareCall(authenticationQuery, ResultSet.TYPE_FORWARD_ONLY,
+				CallableStatement statement = conn.prepareCall(authenticationSQL, ResultSet.TYPE_FORWARD_ONLY,
 						ResultSet.CONCUR_READ_ONLY);) {
 			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 

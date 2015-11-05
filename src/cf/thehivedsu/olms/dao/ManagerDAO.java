@@ -13,7 +13,7 @@ import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
 
 public class ManagerDAO {
 
-	private static final String managerWithIdQuery = "SELECT Manager.* FROM Manager WHERE `id` = ? ";
+	private static final String managerWithIdSQL = "SELECT Manager.* FROM Manager WHERE `id` = ? ";
 
 	public static ManagerBean managerWithId(int managerId) {
 		Connection conn = null;
@@ -23,7 +23,7 @@ public class ManagerDAO {
 			conn = DatabaseConnectionFactory.getConnection();
 			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
-			statement = conn.prepareStatement(managerWithIdQuery);
+			statement = conn.prepareStatement(managerWithIdSQL);
 			statement.setInt(1, managerId);
 
 			resultSet = statement.executeQuery();
@@ -41,7 +41,7 @@ public class ManagerDAO {
 		return null;
 	}
 
-	private static String managerAndEmployeeRecordForManagerWithId = "SELECT * FROM Manager INNER JOIN Employee ON Manager.employeeId = Employee.id  WHERE Manager.id = ? ";
+	private static String managerAndEmployeeRecordForManagerWithIdSQL = "SELECT * FROM Manager INNER JOIN Employee ON Manager.employeeId = Employee.id  WHERE Manager.id = ? ";
 
 	public static ManagerBean managerAndEmployeeRecordForManagerWithId(int managerId) {
 		Connection conn = null;
@@ -51,7 +51,7 @@ public class ManagerDAO {
 			conn = DatabaseConnectionFactory.getConnection();
 			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
-			statement = conn.prepareStatement(managerAndEmployeeRecordForManagerWithId);
+			statement = conn.prepareStatement(managerAndEmployeeRecordForManagerWithIdSQL);
 			statement.setInt(1, managerId);
 
 			resultSet = statement.executeQuery();
@@ -69,7 +69,7 @@ public class ManagerDAO {
 		return null;
 	}
 
-	public static final String isManagerQuery = "SELECT count(*) FROM Manager WHERE employeeId = ? ";
+	public static final String isManagerSQL = "SELECT count(*) FROM Manager WHERE employeeId = ? ";
 
 	public static boolean isManager(int employeeID) {
 		Connection conn = null;
@@ -79,7 +79,7 @@ public class ManagerDAO {
 			conn = DatabaseConnectionFactory.getConnection();
 			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
-			statement = conn.prepareStatement(isManagerQuery);
+			statement = conn.prepareStatement(isManagerSQL);
 			statement.setInt(1, employeeID);
 
 			resultSet = statement.executeQuery();
