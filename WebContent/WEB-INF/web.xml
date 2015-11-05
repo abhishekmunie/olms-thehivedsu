@@ -10,7 +10,7 @@
 	<session-config>
 		<session-timeout>60</session-timeout> <!-- 60 minutes -->
 		<cookie-config>
-			<!-- <http-only>true</http-only> -->
+			<http-only>true</http-only>
 			<!-- <secure>true</secure> -->
 		</cookie-config>
 	</session-config>
