@@ -24,6 +24,8 @@ jsp_imports:
   <div class="panel-body">
     <div class="form-horizontal">
       {% include application.jsp %}
+
+      <% if (currentLeaveApplication.getStatus().equals("P")) { %>
       <div class="form-group">
         <div class="col-sm-6">
           <form action="/" method="post">
@@ -38,6 +40,7 @@ jsp_imports:
           </form>
         </div>
       </div>
+      <% } %>
     </div>
   </div>
 </div>
