@@ -10,7 +10,7 @@ public class Employee extends EmployeeBean {
 	 */
 	private static final long serialVersionUID = 7605492393005662728L;
 
-	public static EmployeeBean employeeWithId(int employeeID) {
-		return EmployeeDAO.employeeWithId(employeeID);
+	public static EmployeeBean employeeWithId(int employeeId) {
+		return EmployeeDAO.employeeWithId(employeeId);
 	}
 }

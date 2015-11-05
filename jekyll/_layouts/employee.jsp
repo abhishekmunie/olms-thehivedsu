@@ -18,7 +18,7 @@ layout: default
       </ul>
     </div>
     <div class="col-sm-9 col-md-10 main">
-      <div class="container">
+      <div class="container-fluid">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title text-center">{{ page.title }}</h3>

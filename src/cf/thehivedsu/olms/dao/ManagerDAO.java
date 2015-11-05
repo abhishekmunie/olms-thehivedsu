@@ -29,8 +29,8 @@ public class ManagerDAO {
 			resultSet = statement.executeQuery();
 			BeanProcessor bp = new BeanProcessor();
 			if (resultSet.first()) {
-				ManagerBean employee = bp.toBean(resultSet, ManagerBean.class);
-				return employee;
+				ManagerBean manager = bp.toBean(resultSet, ManagerBean.class);
+				return manager;
 			}
 			System.out.println("Manager wit id <" + managerId + "> not found.");
 		} catch (SQLException e) {
@@ -94,5 +94,5 @@ public class ManagerDAO {
 		}
 		return false;
 	}
-	
+
 }

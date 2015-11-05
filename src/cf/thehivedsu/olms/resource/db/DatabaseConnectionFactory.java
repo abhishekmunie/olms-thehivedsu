@@ -7,9 +7,6 @@ import java.sql.SQLException;
 public class DatabaseConnectionFactory {
 
 	public static Connection getConnection() throws SQLException {
-		// return getJDBCConnection();
-		// return getJNDIConnection();
-		// return getMySQLConnection();
 		return getDBCPConnection();
 	}
 

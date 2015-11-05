@@ -4,7 +4,7 @@ title: "Application Details"
 ---
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Application ID: 1341324213</h3>
+    <h3 class="panel-title">Application ID: <%=applicationId%></h3>
   </div>
   <div class="panel-body">
     <div class="form-horizontal">
@@ -33,6 +33,6 @@ title: "Application Details"
   </div>
   <div class="panel-body">
     <% Vector<LeaveApplicationBean> leaveApplications = LeaveApplicationDAO.getLeavesRejectedByManager(sessionBean.getEmployeeID()); %>
-    {% include application-list.jsp %}
+    {% include application-list.jsp hideStatus="true" hideEmployeeId="true" %}
   </div>
 </div>

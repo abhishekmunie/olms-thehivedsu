@@ -5,7 +5,7 @@ title: Employee Dashboard
 
 <!-- <div class="panel panel-default"> -->
   <div class="panel-heading">
-    <h3 class="panel-title">Employee ID: 1341324213</h3>
+    <h3 class="panel-title">Employee ID: <jsp:getProperty name="employeeBean" property="id" /></h3>
   </div>
   <div class="panel-body">
     <div class="form-horizontal">

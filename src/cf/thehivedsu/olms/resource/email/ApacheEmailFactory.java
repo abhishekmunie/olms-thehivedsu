@@ -1,4 +1,4 @@
-package cf.thehivedsu.olms.resource.mail;
+package cf.thehivedsu.olms.resource.email;
 
 import java.net.MalformedURLException;
 import java.net.URL;

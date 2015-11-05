@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cf.thehivedsu.olms.resource.mail.EmailConfigBean;
+import cf.thehivedsu.olms.resource.email.EmailConfigBean;
 
 /**
  * Servlet implementation class GmailTLSTest

@@ -4,16 +4,10 @@ title: Signin
 ---
 
 <%
-  String successmsg = (String)request.getAttribute("successMessage");
   String errormsg = (String)request.getAttribute("errorMessage");
   Exception ex = (Exception)(request.getAttribute("errorException"));
-  if (successmsg != null) {
-%>
-<div class="alert alert-success alert-dismissable">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <strong>Success!</strong> <%= (successmsg.equals("")) ? "Login Successfull." : successmsg %>
-</div>
-<% } else if (errormsg != null) { %>
+  if (errormsg != null) {
+ %>
 <div class="alert alert-danger alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   <details>

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.mail.EmailException;
 
-import cf.thehivedsu.olms.resource.mail.ApacheEmailFactory;
+import cf.thehivedsu.olms.resource.email.ApacheEmailFactory;
 
 /**
  * Servlet implementation class ApacheSimpleMailTest
@@ -34,8 +34,9 @@ public class ApacheSimpleMailTest extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			String recipients[] = {"dsu@abhishekmunie.com"};
-			ApacheEmailFactory.sendSimpleEmail(recipients, "Apache Mail Test", "Hello, this mail was sent using apache mail apis. :-)");
+			String recipients[] = { "dsu@abhishekmunie.com" };
+			ApacheEmailFactory.sendSimpleEmail(recipients, "Apache Mail Test",
+					"Hello, this mail was sent using apache mail apis. :-)");
 		} catch (EmailException e) {
 			e.printStackTrace();
 		}

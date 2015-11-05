@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import cf.thehivedsu.olms.URLConstants;
 import cf.thehivedsu.olms.admin.Admin;
 import cf.thehivedsu.olms.bean.CredentialBean;
-import cf.thehivedsu.olms.bean.EmployeeBean;
 import cf.thehivedsu.olms.bean.SessionBean;
 import cf.thehivedsu.olms.dao.AuthenticationDAO;
 
@@ -81,7 +80,7 @@ public class SignIn extends HttpServlet {
 			sessionBean.setEmployeeID(employeeId);
 			redirectAuthorized(request, response);
 		} else {
-			request.setAttribute("errorMessage", "InvalidCredentils");
+			request.setAttribute("errorMessage", "Invalid Credentils");
 			request.getRequestDispatcher(jspPath).forward(request, response);
 		}
 	}
@@ -94,7 +93,7 @@ public class SignIn extends HttpServlet {
 				redirect = "/" + redirect;
 			}
 		}
-		System.out.println(redirect);
+
 		if (redirect != null) {
 			response.sendRedirect(redirect);
 		} else {

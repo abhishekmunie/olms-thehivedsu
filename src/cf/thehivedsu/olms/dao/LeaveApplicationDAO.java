@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
 import org.apache.commons.dbutils.BeanProcessor;
@@ -11,10 +12,10 @@ import org.apache.commons.dbutils.DbUtils;
 
 import cf.thehivedsu.olms.bean.EmployeeBean;
 import cf.thehivedsu.olms.bean.LeaveApplicationBean;
-import cf.thehivedsu.olms.resource.DatabaseConnectionFactory;
+import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
 
 /**
- * 
+ *
  * @author
  *
  */
@@ -22,20 +23,21 @@ public class LeaveApplicationDAO {
 
 	private static final String getApprovedLeavesForEmployeeQuery = "SELECT * FROM LeaveApplication INNER JOIN Employee ON Employee.id = LeaveApplication.employeeId WHERE `status` = \"A\" AND employeeId = ? ";
 
-	public static Vector<LeaveApplicationBean> getApprovedLeavesForEmployee(int employeeID) {
+	public static Vector<LeaveApplicationBean> getApprovedLeavesForEmployee(int employeeId) {
 		ResultSet rs = null;
 		try (Connection connection = DatabaseConnectionFactory.getConnection();
 				PreparedStatement st = connection.prepareStatement(getApprovedLeavesForEmployeeQuery);) {
 			connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 
 			Vector<LeaveApplicationBean> leaveBeans = new Vector<>();
-			st.setInt(1, employeeID);
+			st.setInt(1, employeeId);
 			rs = st.executeQuery();
 
 			BeanProcessor bp = new BeanProcessor();
 			while (rs.next()) {
 				LeaveApplicationBean leaveApplicationBean = bp.toBean(rs, LeaveApplicationBean.class);
 				EmployeeBean employeeBean = bp.toBean(rs, EmployeeBean.class);
+				leaveApplicationBean.setId(rs.getInt(1));
 				employeeBean.setId(leaveApplicationBean.getEmployeeId());
 				leaveApplicationBean.setEmployee(employeeBean);
 				leaveBeans.addElement(leaveApplicationBean);
@@ -65,6 +67,7 @@ public class LeaveApplicationDAO {
 			while (rs.next()) {
 				LeaveApplicationBean leaveApplicationBean = bp.toBean(rs, LeaveApplicationBean.class);
 				EmployeeBean employeeBean = bp.toBean(rs, EmployeeBean.class);
+				leaveApplicationBean.setId(rs.getInt(1));
 				employeeBean.setId(leaveApplicationBean.getEmployeeId());
 				leaveApplicationBean.setEmployee(employeeBean);
 				leaveBeans.addElement(leaveApplicationBean);
@@ -94,6 +97,7 @@ public class LeaveApplicationDAO {
 			while (rs.next()) {
 				LeaveApplicationBean leaveApplicationBean = bp.toBean(rs, LeaveApplicationBean.class);
 				EmployeeBean employeeBean = bp.toBean(rs, EmployeeBean.class);
+				leaveApplicationBean.setId(rs.getInt(1));
 				employeeBean.setId(leaveApplicationBean.getEmployeeId());
 				leaveApplicationBean.setEmployee(employeeBean);
 				leaveBeans.addElement(leaveApplicationBean);

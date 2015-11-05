@@ -43,7 +43,7 @@
           </ul>
         </li>
         <% } else { %>
-        <li><a href="/auth/signin/{% unless page.url == '/index.jsp' %}?{% redirect_url_query %}{% endunless %}">Sign in</a></li>
+        <li><a href="/auth/signin/{% unless page.url == '/index.jsp' or page.url == '/auth/signin/index.jsp' %}?{% redirect_url_query %}{% endunless %}">Sign in</a></li>
         <% } %>
       </ul>
     </div>
