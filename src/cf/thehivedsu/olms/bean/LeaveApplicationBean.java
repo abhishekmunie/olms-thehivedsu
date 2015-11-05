@@ -104,6 +104,27 @@ public class LeaveApplicationBean implements Serializable {
 		return type;
 	}
 
+	public String getTypeName() {
+		switch (type) {
+		case "CL":
+			return "Casual";
+		case "ML":
+			return "Medical";
+		case "VL":
+			return "Vacation";
+		case "SL":
+			return "Study";
+		case "PC":
+			return "Pregnancy/Child Care";
+		case "FR":
+			return "Family Responsibility";
+		case "UL":
+			return "Unpaid";
+		default:
+			return type;
+		}
+	}
+
 	/**
 	 * @param type
 	 *            the type to set
@@ -132,6 +153,22 @@ public class LeaveApplicationBean implements Serializable {
 	 */
 	public String getStatus() {
 		return status;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public String getStatusName() {
+		switch (status) {
+		case "P":
+			return "Pending";
+		case "A":
+			return "Approved";
+		case "R":
+			return "Rejected";
+		default:
+			return status;
+		}
 	}
 
 	/**
