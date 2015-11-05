@@ -47,7 +47,7 @@ jsp_imports:
     <h3 class="panel-title">Previous Leaves</h3>
   </div>
   <div class="panel-body">
-    <% Vector<LeaveApplicationBean> leaveApplications = LeaveApplicationDAO.getLeavesRejectedByManager(sessionBean.getEmployeeID()); %>
+    <% Vector<LeaveApplicationBean> leaveApplications = LeaveApplicationDAO.getApprovedLeavesForEmployee(currentLeaveApplication.getEmployee().getId()); %>
     {% include application-list.jsp hideStatus="true" hideEmployeeId="true" %}
   </div>
 </div>
