@@ -21,7 +21,7 @@ import cf.thehivedsu.olms.resource.db.DatabaseConnectionFactory;
  */
 public class LeaveApplicationDAO {
 
-	private static String insertSQL = "INSERT INTO `olms`.`LeaveApplication` (`employeeId`, `fromDateTime`, `toDateTime`, `type`, `reason`) VALUES (?, ?, ?, ?, ?);";
+	private static String insertSQL = "INSERT INTO `LeaveApplication` (`employeeId`, `fromDateTime`, `toDateTime`, `type`, `reason`) VALUES (?, ?, ?, ?, ?);";
 
 	public static int insert(LeaveApplicationBean leaveApplication) {
 		ResultSet keys = null;
